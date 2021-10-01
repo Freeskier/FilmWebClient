@@ -13,8 +13,9 @@ public class Movie {
     private String descriptionLong;
     private String imageURL;
     private int durationTimeMinutes;
+    private float rating;
 
-    public Movie(int id, String title, String director, String screenwriter, Date productionDate, String filmGenre, String descriptionShort, String descriptionLong, String imageURL, int durationTimeMinutes) {
+    public Movie(int id, String title, String director, String screenwriter, Date productionDate, String filmGenre, String descriptionShort, String descriptionLong, String imageURL, int durationTimeMinutes, float rating) {
         this.id = id;
         this.title = title;
         this.director = director;
@@ -25,6 +26,15 @@ public class Movie {
         this.descriptionLong = descriptionLong;
         this.imageURL = imageURL;
         this.durationTimeMinutes = durationTimeMinutes;
+        this.rating = rating;
+    }
+
+    public float getRating() {
+        return rating;
+    }
+
+    public void setRating(float rating) {
+        this.rating = rating;
     }
 
     public int getId() {
