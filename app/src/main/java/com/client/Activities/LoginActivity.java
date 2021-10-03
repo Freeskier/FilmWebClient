@@ -31,6 +31,9 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Lo
     private void checkForAutoUpdate() {
         if(Storage.getUser(this) != null) {
             Toast.makeText(this, "Auto logged in!", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+            finish();
         }
     }
 
@@ -42,7 +45,7 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Lo
 
 
     public void registerClick(View view) {
-        Intent intent = new Intent(this, MainActivity.class);
+        Intent intent = new Intent(this, RegisterActivity.class);
         startActivity(intent);
     }
 
@@ -53,6 +56,8 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Lo
 
     @Override
     public void onLoginSuccess() {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
         finish();
     }
 }

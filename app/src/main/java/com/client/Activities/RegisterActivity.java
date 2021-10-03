@@ -8,6 +8,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.client.Contracts.RegisterContract;
+import com.client.DTOs.UserForRegisterDTO;
 import com.client.Entities.User;
 import com.client.Presenters.RegisterActivityPresenter;
 import com.client.R;
@@ -38,7 +39,7 @@ public class RegisterActivity extends AppCompatActivity implements RegisterContr
             Toast.makeText(this, "Given password does not match!", Toast.LENGTH_LONG).show();
             return;
         }
-        User user = new User(loginET.getText().toString(), passwordET.getText().toString(), emailET.getText().toString());
+        UserForRegisterDTO user = new UserForRegisterDTO(loginET.getText().toString(), emailET.getText().toString(), passwordET.getText().toString());
         presenter.onRegisterButtonClick(user);
     }
 

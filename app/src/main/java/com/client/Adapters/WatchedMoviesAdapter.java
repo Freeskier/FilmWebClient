@@ -19,15 +19,16 @@ import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.RequestOptions;
 import com.bumptech.glide.request.target.Target;
 import com.client.Activities.MoviesActivity;
+import com.client.Activities.WatchedMoviesActivity;
 import com.client.DTOs.MovieForResponseDTO;
 import com.client.Entities.Movie;
 import com.client.R;
 
 import java.util.List;
 
-public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MoviesViewHolder> {
+public class WatchedMoviesAdapter extends RecyclerView.Adapter<WatchedMoviesAdapter.WatchedMoviesViewHolder> {
 
-    private MoviesActivity moviesActivity;
+    private WatchedMoviesActivity moviesActivity;
     private List<MovieForResponseDTO> moviesList;
     private OnClick onClick;
 
@@ -35,7 +36,7 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MoviesView
         void onClick(int movieId);
     }
 
-    public MoviesAdapter(MoviesActivity moviesActivity, List<MovieForResponseDTO> moviesList, OnClick onClick) {
+    public WatchedMoviesAdapter(WatchedMoviesActivity moviesActivity, List<MovieForResponseDTO> moviesList, OnClick onClick) {
         this.moviesActivity = moviesActivity;
         this.moviesList = moviesList;
         this.onClick = onClick;
@@ -46,17 +47,16 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MoviesView
         moviesList = movies;
     }
 
-    @NonNull
     @Override
-    public MoviesViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public WatchedMoviesViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.item_card_movie, parent, false);
 
-        return new MoviesViewHolder(itemView);
+        return new WatchedMoviesViewHolder(itemView);
     }
 
     @Override
-    public void onBindViewHolder(MoviesViewHolder holder, int position) {
+    public void onBindViewHolder(WatchedMoviesViewHolder holder, int position) {
 
         holder.tvMovieTitle.setText(moviesList.get(position).getTitle());
         holder.tvMovieRatings.setText(Float.toString(moviesList.get(position).getRating()));
@@ -76,7 +76,7 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MoviesView
                         return false;
                     }
                 })
-        .into(holder.ivMovieThumb);
+                .into(holder.ivMovieThumb);
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -91,7 +91,7 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MoviesView
         return moviesList.size();
     }
 
-    class MoviesViewHolder extends RecyclerView.ViewHolder {
+    class WatchedMoviesViewHolder extends RecyclerView.ViewHolder {
 
         public TextView tvMovieTitle;
 
@@ -101,14 +101,14 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MoviesView
 
         public ImageView ivMovieThumb;
 
-        public MoviesViewHolder(View itemView) {
+        public WatchedMoviesViewHolder(View itemView) {
             super(itemView);
             tvMovieTitle = itemView.findViewById(R.id.movie_title);
             tvReleaseDate = itemView.findViewById(R.id.movie_release);
             tvMovieRatings = itemView.findViewById(R.id.movie_rating);
             ivMovieThumb = itemView.findViewById(R.id.movie_thumb);
         }
-}
+    }
 
 
 }

@@ -11,7 +11,6 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.client.LocalStorage.Storage;
-import com.client.Entities.User;
 import com.client.R;
 import com.google.android.material.navigation.NavigationView;
 
@@ -36,13 +35,6 @@ public class MainActivity extends AppCompatActivity {
         nameTV = navigationView.getHeaderView(0).findViewById(R.id.nav_nameTitleTV);
         emailTV = navigationView.getHeaderView(0).findViewById(R.id.nav_emailTitleTV);
         typeTV = navigationView.getHeaderView(0).findViewById(R.id.nav_typeTitleTV);
-        User loggedUser = Storage.getUser(this);
-        if(loggedUser == null) return;
-        if(loggedUser.getLogin() != null || loggedUser.getEmail() != null) {
-            nameTV.setText(loggedUser.getLogin());
-            emailTV.setText(loggedUser.getEmail());
-        }
-        MenuItem item =navigationView.getMenu().findItem(R.id.addRoom);
 
     }
 
@@ -51,16 +43,26 @@ public class MainActivity extends AppCompatActivity {
             new NavigationView.OnNavigationItemSelectedListener() {
                 @Override
                 public boolean onNavigationItemSelected(MenuItem item) {
+                    Intent intent;
                     switch (item.getItemId()) {
-                        case R.id.profile:
-                            Intent intent2 = new Intent(getApplicationContext(), MoviesActivity.class);
-                            startActivity(intent2);
+                        case R.id.moviesIds:
+                            intent = new Intent(getApplicationContext(), MoviesActivity.class);
+                            startActivity(intent);
                             break;
-
+                        case R.id.watched_moviesIds:
+                            intent = new Intent(getApplicationContext(), WatchedMoviesActivity.class);
+                            startActivity(intent);
+                            break;
+                        case R.id.commentsIds:
+                            intent = new Intent(getApplicationContext(), MyCommentsActivity.class);
+                            startActivity(intent);
+                            break;
                         default:
-                            Intent intent1 = new Intent(getApplicationContext(), MainActivity.class);
-                            startActivity(intent1);
+                            intent = new Intent(getApplicationContext(), MainActivity.class);
+                            startActivity(intent);
+                            break;
                     }
+
                     return false;
                 }
             };

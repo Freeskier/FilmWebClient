@@ -5,6 +5,8 @@ import com.client.Contracts.LoginContract;
 import com.client.DTOs.UserForLoginDTO;
 import com.client.DTOs.UserToResponseDTO;
 import com.client.Entities.User;
+import com.client.LocalStorage.Storage;
+import com.client.LocalStorage.StorageUser;
 import com.client.Models.LoginModel;
 
 
@@ -25,8 +27,10 @@ public class LoginActivityPresenter implements LoginContract.LoginPresenter {
                 new LoginContract.LoginModel.OnLoginListener() {
                     @Override
                     public void onResponse(UserToResponseDTO userResponse) {
-                        System.out.println(userResponse.getToken());
+                        Storage.setUser(new StorageUser(userResponse.getID(), userResponse.getToken()), activity);
+                        activity.onLoginSuccess();
                     }
                 });
     }
+
 }

@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -11,7 +11,8 @@
         android:layout_gravity="center"
         android:layout_margin="3dp"
         android:elevation="@dimen/cardview_default_elevation"
-        app:cardCornerRadius="@dimen/cardview_default_radius">
+        app:cardCornerRadius="@dimen/cardview_default_radius"
+        android:padding="5dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -23,8 +24,8 @@
                 <ImageView
                     android:id="@+id/movie_thumb"
                     android:layout_width="match_parent"
-                    android:layout_height="200dp"
-                    android:scaleType="fitXY"
+                    android:layout_height="150dp"
+                    android:scaleType="fitCenter"
                     android:background="?attr/selectableItemBackgroundBorderless"
                     android:contentDescription="Hold"/>
             </RelativeLayout>
@@ -37,6 +38,8 @@
                 android:typeface="sans"
                 android:ellipsize="end"
                 android:maxLines="1"
+                android:padding="3dp"
+                android:textSize="20sp"
                 />
 
             <LinearLayout
@@ -50,12 +53,31 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/movie_release"
+                    android:textStyle="italic"
+                    android:layout_weight="1"
+                    android:layout_gravity="bottom"
                     />
-                <TextView
+                <LinearLayout
+                    android:layout_weight="1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/movie_rating"
-                    />
+                    android:gravity="end"
+                    >
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/ic_star"/>
+                    <TextView
+                        android:paddingHorizontal="5dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/movie_rating"
+                        android:textSize="17sp"
+                        />
+
+                </LinearLayout>
+
 
             </LinearLayout>
         </RelativeLayout>

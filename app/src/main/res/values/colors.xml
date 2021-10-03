@@ -20,4 +20,10 @@
     <color name="item_menu_background">#0E4B66</color>
     <color name="item_menu_border">#07202B</color>
     <color name="oragne">#FF5722</color>
+    <color name="grey">#4C4A49</color>
+    <color name="backgroudDetails">#5B6D91</color>
+    <color name="commentBG">#CFCFCF</color>
+    <color name="detailTitleBG">#8F1B1B1B</color>
+    <color name="yellow">#FFF200</color>
+
 </resources>
